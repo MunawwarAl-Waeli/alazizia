@@ -1,0 +1,255 @@
+الصور التي تحتاج مراجعة يدوية
+============================================================
+
+0.jpg
+score: 0
+matches: 
+
+1.jpg
+score: 0
+matches: 
+
+12.webp
+score: 0
+matches: 
+
+2.jpg
+score: 0
+matches: 
+
+2.png
+score: 0
+matches: 
+
+3.jpg
+score: 0
+matches: 
+
+4.jpg
+score: 0
+matches: 
+
+5.jpg
+score: 0
+matches: 
+
+7.jpg
+score: 0
+matches: 
+
+alahsa-umbrellas_2c4997d8.webp
+score: 0
+matches: 
+
+dammam-umbrellas-installation-recovery_4d0717fc.webp
+score: 0
+matches: 
+
+hero-day.jpg
+score: 0
+matches: 
+
+hero-day2.jpg
+score: 0
+matches: 
+
+hero-day3.jpg
+score: 0
+matches: 
+
+jeddah-shades-architectural-reference_e7af56f7.jpg
+score: 0
+matches: 
+
+jeddah-umbrellas-recovery_976a45e3.webp
+score: 0
+matches: 
+
+New-Project-2.webp
+score: 0
+matches: 
+
+roof-shades_63007f14.webp
+score: 0
+matches: 
+
+test-image-size-1.webp
+score: 0
+matches: 
+
+user.png
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.06-1.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.08-1.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.11-1-1.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.11-1.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.25.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.28-2-1.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.28-2.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.33.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.34-2-300x255.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.34-2.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.44-1.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.44-2.webp
+score: 0
+matches: 
+
+WhatsApp-Image-2024-03-23-at-04.23.44.webp
+score: 0
+matches: 
+
+اسعار-سواتر-الاحواش-.webp
+score: 8
+matches: title:سواتر
+
+اسعار-سواتر-الاحواش-1.webp
+score: 8
+matches: title:سواتر
+
+اسعار-سواتر-الاحواش.webp
+score: 8
+matches: title:سواتر
+
+اسعار-مظلات-بي-في-سي-في-السعوديه.webp
+score: 8
+matches: title:مظلات
+
+اسعار-مظلات-بي-في-سي.webp
+score: 8
+matches: title:مظلات
+
+السواتر.jpg
+score: 8
+matches: title:سواتر
+
+برجولات-1.webp
+score: 8
+matches: title:برجولات
+
+برجولات-في-السعوديه.webp
+score: 8
+matches: title:برجولات
+
+برجولات-مودرن.webp
+score: 8
+matches: title:برجولات
+
+برجولات.webp
+score: 8
+matches: title:برجولات
+
+ساتر-جدران-.webp
+score: 0
+matches: 
+
+ساتر-جدران-1.webp
+score: 0
+matches: 
+
+ساتر-جدران.webp
+score: 0
+matches: 
+
+سواتر.webp
+score: 8
+matches: title:سواتر
+
+شركة-العزيزية-للمظلات-والسواتر.webp
+score: 8
+matches: title:مظلات
+
+شركه-عمل-برجولات-في-السعوديه.webp
+score: 8
+matches: title:برجولات
+
+شركه-عمل-برجولات-مودرن.webp
+score: 8
+matches: title:برجولات
+
+شركه-عمل-مظلات-بي-في-سي-الرياض.webp
+score: 8
+matches: title:مظلات
+
+شركه-عمل-مظلات-بي-في-سي.webp
+score: 8
+matches: title:مظلات
+
+مثال-عن-حجم-معرض-الصور.webp
+score: 0
+matches: 
+
+مظلات-ابواب.webp
+score: 8
+matches: title:مظلات
+
+مظلات-بالاحساء.webp
+score: 8
+matches: title:مظلات
+
+مظلات-بجدة.webp
+score: 8
+matches: title:مظلات
+
+مظلات-بي-في-سي-الرياض.webp
+score: 8
+matches: title:مظلات
+
+مظلات-جدة.webp
+score: 8
+matches: title:مظلات
+
+مظلات-سواتر-الدمام.webp
+score: 8
+matches: title:مظلات
+
+مظلات-سواتر-الرياض.webp
+score: 8
+matches: title:مظلات
+
+مظلات-في-الاحساء.webp
+score: 8
+matches: title:مظلات
+
+مظلات-في-جده.webp
+score: 8
+matches: title:مظلات
+
+مظلات.webp
+score: 8
+matches: title:مظلات
+
