@@ -303,7 +303,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
       <footer className="site-footer">
         <div className="container site-footer__top">
           <div className="site-footer__brand">
-            <img src={brandAssets.logo} alt="" />
+            <img src={brandAssets.logo} alt="" width={1220} height={536} />
             <div>
               <h2>
                 حلول ظلّ مدروسة
