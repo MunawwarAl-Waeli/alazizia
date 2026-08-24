@@ -1,6 +1,6 @@
 # Cloude Code ToolBox — MCP & Skills awareness
 
-_Generated: 2026-08-24T15:20:25.949Z_
+_Generated: 2026-08-24T20:37:22.222Z_
 
 ## How to use this report
 
@@ -13,9 +13,9 @@ _Generated: 2026-08-24T15:20:25.949Z_
 
 ## MCP — workspace
 
-Workspace `mcp.json` _(folder: jeddah-shades-static-final)_
+Workspace `mcp.json` _(folder: alaziziafinal)_
 
-- **c:\Users\USER\Desktop\jeddah-shades-static-final (2)\jeddah-shades-static-final\.mcp.json** — _File missing_
+- **c:\Users\USER\Desktop\f\alaziziafinal\.mcp.json** — _File missing_
 
 _No active workspace servers in mcp.json._
 

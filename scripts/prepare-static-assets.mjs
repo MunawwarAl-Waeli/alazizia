@@ -1,8 +1,12 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { fileURLToPath } from "node:url";
 
-const projectRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const projectRoot = path.resolve(__dirname, "..");
 const staticAssetsRoot = path.join(projectRoot, "static-assets");
 const sourceRoots = [path.join(projectRoot, "client", "src"), path.join(projectRoot, "client", "index.html")];
 const storageReference = /\/manus-storage\/([a-zA-Z0-9][a-zA-Z0-9._/-]*)/g;
@@ -20,6 +24,7 @@ function walk(directory) {
 function collectReferences() {
   const references = new Set();
   for (const sourceRoot of sourceRoots) {
+    if (!existsSync(sourceRoot)) continue;
     const files = statSync(sourceRoot).isDirectory() ? walk(sourceRoot) : [sourceRoot];
     for (const file of files) {
       if (!/\.(tsx?|html)$/i.test(file)) continue;
@@ -33,7 +38,7 @@ function collectReferences() {
 const references = collectReferences();
 const missing = references.filter((reference) => {
   const assetPath = path.join(staticAssetsRoot, reference);
-  return !assetPath.startsWith(`${staticAssetsRoot}${path.sep}`) || !existsSync(assetPath) || !statSync(assetPath).isFile();
+  return !assetPath.startsWith(`${staticAssetsRoot}${path.sep}`) || !existsSync(assetPath) || !statSync(assetpath).isFile();
 });
 
 if (missing.length) {
