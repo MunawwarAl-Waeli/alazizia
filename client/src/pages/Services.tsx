@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useMemo, useState, useRef } from "react";
 import { Search } from "lucide-react";
 import { PageHero, SectionIntro } from "@/components/SiteShell";
 import ServiceCard from "@/components/ServiceCard";
-import { brandAssets, loadServices, type Service } from "@/data/services";
+import { brandAssets, getInitialServices, type Service } from "@/data/services";
 import { DirectContactActions } from "@/lib/contact";
 import { usePageMeta } from "@/lib/seo";
 
@@ -10,7 +10,7 @@ import { usePageMeta } from "@/lib/seo";
  * صفحة جميع الخدمات
  */
 export default function Services() {
-  const [services, setServices] = useState<Service[]>([]);
+  const [services] = useState<Service[]>(getInitialServices);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("الكل");
 
@@ -25,15 +25,6 @@ export default function Services() {
     "تركيب وتصميم مظلات وسواتر وبرجولات في جدة للمنازل والفلل ومواقف السيارات والحدائق والمسابح والمنشآت. تعرف على خدمات شركة العزيزية واختر الحل المناسب لموقعك.",
     "/services"
   );
-
-  /**
-   * تحميل الخدمات
-   */
-  useEffect(() => {
-    loadServices()
-      .then(setServices)
-      .catch(() => setServices([]));
-  }, []);
 
   /**
    * التصنيفات
@@ -136,6 +127,7 @@ export default function Services() {
         title="حلول متخصصة للمساحات الخارجية في جدة"
         description="نقدم تصميم وتفصيل وتركيب المظلات والسواتر والبرجولات وحلول التغطية للمنازل والفلل ومواقف السيارات والحدائق والمسابح والمنشآت، مع اختيار الحل المناسب لطبيعة كل موقع."
         image={brandAssets.architecture}
+        imageSrcSet={brandAssets.architectureSrcSet}
       />
 
       {/* تم ربط الـ ref هنا */}

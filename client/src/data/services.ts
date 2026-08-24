@@ -2,6 +2,8 @@
  * مصدر الخدمات وإدارتها: ربط تلقائي وديناميكي للصور بناءً على مسارات المجلدات.
  */
 
+import servicePayload from "../../../static-assets/services-data_71caf2b0.json";
+
 export type Service = {
   id: string;
   slug: string;
@@ -20,7 +22,18 @@ export type Service = {
   galleryImages: string[]; // إضافة هذا الحقل
 };
 
-const SERVICE_SOURCE = "/media/services-data_71caf2b0.json";
+const SERVICE_ITEMS: Service[] = (
+  Array.isArray(servicePayload) ? servicePayload : servicePayload.services
+) as Service[];
+
+const NORMALIZED_SERVICES = SERVICE_ITEMS.map(item => ({
+  ...item,
+  image: getServiceImage(item),
+}));
+
+export function getInitialServices(): Service[] {
+  return NORMALIZED_SERVICES;
+}
 
 // -----------------------------------------------------
 // 1. توليد المسارات الديناميكية للصور (Dynamic Image Resolution)
@@ -80,7 +93,9 @@ export function getCategory(service: Service) {
 
 export const brandAssets = {
   logo: "/media/company-logo_596a3868.png",
-  architecture: "/media/jeddah-shades-architectural-reference_e7af56f7.jpg",
+  architecture: "/media/jeddah-shades-architectural-reference_e7af56f7-1600.webp",
+  architectureSrcSet:
+    "/media/jeddah-shades-architectural-reference_e7af56f7-1024.webp 1024w, /media/jeddah-shades-architectural-reference_e7af56f7-1600.webp 1600w",
   ctaCanopy:
     "/media/services/tensile-structure-umbrellas/tensile-structure-umbrellas-2.webp",
   materials: "/media/services/fabric-screens/fabric-screens-1.webp",
@@ -134,36 +149,7 @@ let serviceCache: Promise<Service[]> | undefined;
 
 export function loadServices(): Promise<Service[]> {
   if (!serviceCache) {
-    serviceCache = fetch(SERVICE_SOURCE)
-      .then(async response => {
-        if (!response.ok) {
-          throw new Error(
-            `تعذر تحميل ملف الخدمات: ${response.status} ${response.statusText}`
-          );
-        }
-
-        const data = await response.json();
-        const items: Service[] = Array.isArray(data) ? data : data.services;
-
-        if (!Array.isArray(items)) {
-          throw new Error(
-            "صيغة ملف الخدمات غير صحيحة: لم يتم العثور على قائمة خدمات"
-          );
-        }
-
-        return items;
-      })
-      .then(items =>
-        items.map(item => ({
-          ...item,
-          // إسناد صورة الغلاف تلقائياً عند تحميل الخدمات
-          image: getServiceImage(item),
-        }))
-      )
-      .catch(error => {
-        console.error("خطأ تحميل الخدمات:", error);
-        throw error;
-      });
+    serviceCache = Promise.resolve(getInitialServices());
   }
 
   return serviceCache;
