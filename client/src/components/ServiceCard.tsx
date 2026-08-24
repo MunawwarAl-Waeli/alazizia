@@ -34,7 +34,9 @@ export default function ServiceCard({ service, index = 0 }: ServiceCardProps) {
             e.currentTarget.src = "/media/default-image.webp";
           }}
           className="service-card__image"
-          loading={index < 4 ? "eager" : "lazy"}
+          width={500}
+          height={500}
+          loading={index === 0 ? "eager" : "lazy"}
           decoding="async"
         />
       </div>

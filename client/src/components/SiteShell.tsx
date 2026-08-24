@@ -76,6 +76,7 @@ export function PageHero({
   title,
   description,
   image,
+  imageSrcSet,
   children,
   className = "",
 }: {
@@ -83,6 +84,7 @@ export function PageHero({
   title: string;
   description?: string;
   image?: string;
+  imageSrcSet?: string;
   children?: ReactNode;
   className?: string;
 }) {
@@ -91,10 +93,13 @@ export function PageHero({
       {image && (
         <img
           src={image}
+          srcSet={imageSrcSet}
+          sizes="100vw"
           alt=""
           className="page-hero__image"
-          loading="eager" // أولوية تحميل صورة الهيرو
-          decoding="sync"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
       )}
       <div className="page-hero__veil" />

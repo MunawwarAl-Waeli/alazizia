@@ -5,7 +5,9 @@ import process from "node:process";
 const baseUrl = process.argv[2] || "http://127.0.0.1:8090";
 const projectRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const distRoot = path.join(projectRoot, "dist");
-const services = JSON.parse(readFileSync(path.join(distRoot, "media", "services-data_71caf2b0.json"), "utf8"));
+const servicePayload = JSON.parse(readFileSync(path.join(distRoot, "media", "services-data_71caf2b0.json"), "utf8"));
+const services = Array.isArray(servicePayload) ? servicePayload : servicePayload.services;
+if (!Array.isArray(services)) throw new Error("Invalid services payload: expected an array or a services array");
 const routes = ["/", "/about", "/services", "/gallery", "/sitemap", ...services.map((service) => `/services/${service.slug}`)];
 const publicFiles = ["/robots.txt", "/sitemap.xml", "/media/services-data_71caf2b0.json"];
 

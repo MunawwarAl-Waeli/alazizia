@@ -7,8 +7,9 @@ import {
   getCategory,
   getServiceContactCopy,
   getServiceGallery,
-  loadServices,
-  type Service,
+      getInitialServices,
+    type Service,
+
 } from "@/data/services";
 import { DirectContactActions } from "@/lib/contact";
 import { useJsonLd, usePageMeta } from "@/lib/seo";
@@ -16,20 +17,11 @@ import { useJsonLd, usePageMeta } from "@/lib/seo";
 export default function ServiceDetail() {
   const [, params] = useRoute("/services/:slug");
 
-  const [services, setServices] = useState<Service[]>([]);
+  const [services] = useState<Service[]>(getInitialServices);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // حالة جديدة للتحكم في السحب عبر شاشات اللمس (Swipe) في الجوال
   const [touchStart, setTouchStart] = useState<number | null>(null);
-
-  /*
-   * تحميل الخدمات
-   */
-  useEffect(() => {
-    loadServices()
-      .then(setServices)
-      .catch(() => setServices([]));
-  }, []);
 
   /*
    * الخدمة الحالية
@@ -272,7 +264,9 @@ export default function ServiceDetail() {
                   <img
                     src={item!.src.toString()}
                     alt={`${service.title} في جدة - نموذج من الأعمال`}
-                    loading={index > 2 ? "lazy" : "eager"}
+                    width={500}
+                    height={500}
+                    loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
                     onError={e => {
                       const target = e.target as HTMLElement;
@@ -325,6 +319,8 @@ export default function ServiceDetail() {
           <img
             src="/media/flat-illustration-customer-support-1.png.webp"
             alt="خدمة العملاء والدعم"
+            width={2000}
+            height={2000}
             loading="lazy"
             decoding="async"
           />

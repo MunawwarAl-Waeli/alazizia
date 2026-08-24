@@ -1,22 +1,16 @@
 /** ظلّ معماري هادئ: الصفحة الرئيسية مركزة على الخدمات والأعمال وقناة تواصل مباشرة بلا نماذج وسيطة. */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowDownLeft, ArrowUpLeft } from "lucide-react";
 import { Link } from "wouter";
 import ServiceCard from "@/components/ServiceCard";
 import { ButtonLink, SectionIntro } from "@/components/SiteShell";
-import { brandAssets, loadServices, type Service } from "@/data/services";
+import { brandAssets, getInitialServices, type Service } from "@/data/services";
 import { DirectContactActions } from "@/lib/contact";
 import { useJsonLd, usePageMeta } from "@/lib/seo";
 import "@/pages/service-cards.css";
 function useServices() {
-  const [services, setServices] = useState<Service[]>([]);
-  const [error, setError] = useState(false);
-  useEffect(() => {
-    loadServices()
-      .then(setServices)
-      .catch(() => setError(true));
-  }, []);
-  return { services, error };
+  const [services] = useState<Service[]>(getInitialServices);
+  return { services, error: false };
 }
 
 export default function Home() {
@@ -41,8 +35,15 @@ export default function Home() {
       <section className="home-hero">
         <img
           src={brandAssets.architecture}
+          srcSet={brandAssets.architectureSrcSet}
+          sizes="100vw"
           alt=""
           className="home-hero__brand-image"
+          width={1600}
+          height={900}
+          loading="eager"
+          fetchPriority="low"
+          decoding="async"
         />
         <div className="home-hero__glow" />
         <div className="container home-hero__layout">
@@ -74,6 +75,11 @@ export default function Home() {
             <img
               src="/media/services/garden-umbrellas/garden-umbrellas-32.webp"
               alt="برجولة وجلسة خارجية من أعمال الشركة"
+              width={500}
+              height={500}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
             <div className="home-hero__project-label">
               <span>مساحات خارجية</span>
@@ -138,11 +144,14 @@ export default function Home() {
           {workItems.map(service => (
             <article className="service-card" key={service.slug}>
               <div className="service-card__image">
-                <img
-                  src={service.image}
-                  alt={`${service.title} من أعمال شركة العزيزية`}
-                  loading="lazy"
-                />
+                  <img
+                    src={service.image}
+                    alt={`${service.title} من أعمال شركة العزيزية`}
+                    width={500}
+                    height={500}
+                    loading="lazy"
+                    decoding="async"
+                  />
 
                 <Link
                   href={`/services/${service.slug}`}
@@ -159,7 +168,14 @@ export default function Home() {
         </div>
       </div>
       <section className="cta-band">
-        <img src={brandAssets.ctaCanopy} alt="" />
+        <img
+          src={brandAssets.ctaCanopy}
+          alt=""
+          width={500}
+          height={500}
+          loading="lazy"
+          decoding="async"
+        />
         <div className="cta-band__veil" />
         <div className="container cta-band__inner">
           <p className="eyebrow eyebrow--copper">ابدأ من موقعك</p>

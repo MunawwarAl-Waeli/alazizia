@@ -13,6 +13,8 @@ function setMeta(name: string, content: string, property = false) {
   element.content = content;
 }
 
+const SITE_ORIGIN = (import.meta.env.VITE_SITE_URL || "https://al-azizia.com").replace(/\/$/, "");
+
 export function usePageMeta(title: string, description: string, path = "/") {
   useEffect(() => {
     const resolvedTitle = title.includes("العزيزية") ? title : `${title} | شركة العزيزية للمظلات والسواتر`;
@@ -22,13 +24,14 @@ export function usePageMeta(title: string, description: string, path = "/") {
     setMeta("og:description", description, true);
     setMeta("twitter:title", resolvedTitle);
     setMeta("twitter:description", description);
+    setMeta("og:url", `${SITE_ORIGIN}${path}`, true);
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement("link");
       canonical.rel = "canonical";
       document.head.appendChild(canonical);
     }
-    canonical.href = `${window.location.origin}${path}`;
+    canonical.href = `${SITE_ORIGIN}${path}`;
   }, [description, path, title]);
 }
 

@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import SiteShell from "@/components/SiteShell";
-const Home = lazy(() => import("@/pages/Home"));
+import Home from "@/pages/Home";
 const Services = lazy(() => import("@/pages/Services"));
 const ServiceDetail = lazy(() => import("@/pages/ServiceDetail"));
 const Gallery = lazy(() => import("@/pages/Gallery"));

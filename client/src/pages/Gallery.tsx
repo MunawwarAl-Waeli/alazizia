@@ -1,10 +1,10 @@
 /** ظلّ معماري هادئ: معرض بصري ديناميكي يقرأ صور الخدمات مباشرة وبدون تعقيد. */
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef } from "react";
 import { PageHero } from "@/components/SiteShell";
 import {
   brandAssets,
-  loadServices,
   getServiceGallery,
+  getInitialServices,
   type Service,
 } from "@/data/services";
 import { usePageMeta } from "@/lib/seo";
@@ -15,8 +15,8 @@ const ITEMS_PER_PAGE = 30;
 
 export default function Gallery() {
   const [category, setCategory] = useState("الكل");
-  const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [services] = useState<Service[]>(getInitialServices);
+  const loading = false;
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
   // مرجع للتحكم في التمرير التلقائي لأعلى المعرض
@@ -27,14 +27,6 @@ export default function Gallery() {
     "مشاهد وصور من خدمات المظلات والسواتر والبرجولات والجلسات الخارجية والتغطيات.",
     "/gallery"
   );
-
-  // تحميل قائمة الخدمات ديناميكياً عند فتح الصفحة
-  useEffect(() => {
-    loadServices()
-      .then(data => setServices(data))
-      .catch(error => console.error("خطأ في تحميل المعرض:", error))
-      .finally(() => setLoading(false));
-  }, []);
 
   // استخراج الأقسام تلقائياً وبشكل ديناميكي من الخدمات المحملة
   const categories = useMemo(() => {
@@ -104,6 +96,7 @@ export default function Gallery() {
         title="المادة والظل في مشاهد حقيقية."
         description="استكشف صورًا مختارة من أعمال المظلات والسواتر والبرجولات والتغطيات الخارجية."
         image={brandAssets.architecture}
+        imageSrcSet={brandAssets.architectureSrcSet}
       />
 
       {/* تم ربط المرجع (ref) هنا */}
@@ -138,7 +131,10 @@ export default function Gallery() {
                     <img
                       src={item.src.toString()}
                       alt={item.alt}
-                      loading={index < 6 ? "eager" : "lazy"}
+                      width={500}
+                      height={500}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      decoding="async"
                       onError={e => {
                         const target = e.target as HTMLElement;
                         if (target.parentElement) {
